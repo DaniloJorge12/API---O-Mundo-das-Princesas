@@ -21,7 +21,7 @@ app.get("/princesas/:id", (req, res) => {
         res.status(200).json(princesasEncontrada);
     }else{
         res.status(404).json({
-            mensagem: "Princesa não encontrada com esse id"
+            erro: "Princesa não encontrada com esse id"
         });
     }
 });
@@ -34,19 +34,19 @@ app.get("/princesas/nome/:nome", (req, res) => {
         res.status(200).json(princesasEncontrada);
     }else{
         res.status(404).json({
-            mensagem: "Princesa não encontrada com esse nome"
+            erro: "Princesa não encontrada com esse nome"
         });
     }
 })
 
 app.get("/princesas/reino/:reino", (req, res) => {
-    let reino = req.params.reino;
+    let reino = req.params.reino.toLowerCase();
     const reinoEncontrado = princesas.filter(p => p.reino.toLowerCase().includes(reino));
     if(reinoEncontrado.length > 0){
         res.status(200).json(reinoEncontrado);
     }else{
         res.status(404).json({
-            mensagem: "Princesa não encontrada nesse reino"
+            erro: "Princesa não encontrada nesse reino"
         })
     }
 })
@@ -58,7 +58,7 @@ app.get("/princesas/ativas/sim", (req, res) => {
         res.status(200).json(resultado);
     }else{
         res.status(404).json({
-            mensagem: "Nenhuma princesa ativa encontrada"
+            erro: "Nenhuma princesa ativa encontrada"
         })
     } 
 })
