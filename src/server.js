@@ -67,5 +67,3 @@ app.get("/princesas/ativas/sim", (req, res) => {
 app.listen(3000, () => {
     console.log('Rodando a API das princesas na porta 3000! Acesse http:localhost:3000')
 })
-
-
